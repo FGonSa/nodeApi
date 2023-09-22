@@ -1,5 +1,5 @@
 import express from "express";
-import  { nuevoCliente, mostrarClientes } from '../controllers/clienteController.js'
+import  { nuevoCliente, mostrarClientes, showCliente, actualizarCliente } from '../controllers/clienteController.js'
 
 const router = express.Router()
 
@@ -11,5 +11,12 @@ export default () => {
 
     //Mostrar clientes
     router.get('/clientes', mostrarClientes)
+
+    //Mostrar un cliente específico con su ID
+    router.get('/clientes/:idCliente', showCliente)
+
+    //Actualizar cliente
+    router.put('/clientes/:idCliente', actualizarCliente)
+
     return router;
 }
