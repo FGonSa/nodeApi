@@ -1,7 +1,7 @@
 import express from "express";
 import  { nuevoCliente, mostrarClientes, showCliente, actualizarCliente, eliminarCliente } from '../controllers/clienteController.js'
 import subirArchivo, { actualizarEmpresa, eliminarEmpresa, mostrarEmpresas, nuevaEmpresa, showEmpresa } from "../controllers/empresaController.js";
-import { mostrarServicios, nuevoServicio, showServicio } from "../controllers/servicioController.js";
+import { actualizarServicio, eliminarServicio, mostrarServicios, nuevoServicio, showServicio } from "../controllers/servicioController.js";
 
 const router = express.Router()
 
@@ -64,6 +64,12 @@ export default () => {
 
     //Añadir nuevo servicio
     router.post('/servicios/', nuevoServicio)
+
+    //Actualizar servicio
+    router.put('/servicios/:idServicio', actualizarServicio)
+
+    //Eliminar servicio
+    router.delete('/servicios/:idServicio', eliminarServicio)
 
     return router;
 }

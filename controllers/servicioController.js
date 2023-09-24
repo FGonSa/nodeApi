@@ -45,3 +45,32 @@ export const nuevoServicio = async (req, res, next) => {
         next()
     }
 }
+
+export const actualizarServicio = async (req, res, next) => {
+  try {
+    const servicio = await Servicios.findOneAndUpdate({_id: req.params.idServicio}, req.body, {
+      new: true
+    })
+    .populate('cliente')
+    .populate({
+      path: 'servicio.empresa',
+      model: 'Empresas'
+    })
+    console.log("Servicio actualizado correctamente.")
+    res.json(servicio)
+  } catch (error) {
+    console.log(error)
+        next()
+  }
+}
+
+export const eliminarServicio = async (req, res, next) => {
+  try {
+    await Servicios.findOneAndDelete({_id: req.params.idServicio})
+    res.json({msg: "El servicio ha sido eliminado."})
+    console.log("Servicio eliminado correctamente.")
+  } catch (error) {
+    console.log(error)
+        next()
+  }
+}
