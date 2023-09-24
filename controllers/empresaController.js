@@ -113,7 +113,9 @@ export const eliminarEmpresa = async (req, res, next) => {
 
 /**
   --------------------------
+  --------------------------
   CONFIGURACIÓN MULTER PARA SUBIR IMAGEN
+  --------------------------
   --------------------------
   */
 const configuracionMulter = {
