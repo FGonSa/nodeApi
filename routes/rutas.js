@@ -1,6 +1,6 @@
 import express from "express";
-import  { nuevoCliente, mostrarClientes, showCliente, actualizarCliente } from '../controllers/clienteController.js'
-import subirArchivo, { mostrarEmpresas, nuevaEmpresa, showEmpresa } from "../controllers/empresaController.js";
+import  { nuevoCliente, mostrarClientes, showCliente, actualizarCliente, eliminarCliente } from '../controllers/clienteController.js'
+import subirArchivo, { actualizarEmpresa, eliminarEmpresa, mostrarEmpresas, nuevaEmpresa, showEmpresa } from "../controllers/empresaController.js";
 
 const router = express.Router()
 
@@ -24,6 +24,9 @@ export default () => {
     //Actualizar cliente
     router.put('/clientes/:idCliente', actualizarCliente)
 
+    //Eliminar cliente
+    router.delete('/clientes/:idCliente', eliminarCliente)
+
 
     /**
     ----------------
@@ -34,11 +37,17 @@ export default () => {
     //Mostrar todas las empresas
     router.get('/empresas', mostrarEmpresas)
 
-    //Mostrar todas las empresas
+    //Mostrar una empresa en concreto
     router.get('/empresas/:idEmpresa', showEmpresa)
 
     //Añadir Empresa nueva
     router.post('/empresas', subirArchivo, nuevaEmpresa)
+
+    //Actualizar Empresa
+    router.put('/empresas/:idEmpresa', subirArchivo, actualizarEmpresa)
+
+    //Eliminar Empresa
+    router.delete('/empresas/:idEmpresa', eliminarEmpresa)
 
     return router;
 }
